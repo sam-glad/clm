@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/sam-glad/clm.svg?branch=master)](https://travis-ci.org/sam-glad/clm) [![Code Climate](https://codeclimate.com/github/sam-glad/clm.png)](https://codeclimate.com/github/sam-glad/clm) [![Coverage Status](https://coveralls.io/repos/sam-glad/clm/badge.png)](https://coveralls.io/r/sam-glad/clm)
