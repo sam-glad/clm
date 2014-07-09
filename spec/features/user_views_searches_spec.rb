@@ -11,7 +11,7 @@ feature 'user creates a new user', %Q(
     user = FactoryGirl.create(:user)
     sign_in_as(user)
 
-    searches = FactoryGirl.create_list(:search, 5)
+    searches = FactoryGirl.create_list(:search, 5, user: user)
 
     visit searches_path
     searches.each do |search|

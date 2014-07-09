@@ -1,6 +1,6 @@
 class SearchesController < ApplicationController
   def index
     @user = current_user
-    @searches = @user.Search.all
+    @searches = Search.where(user: @user)
   end
 end

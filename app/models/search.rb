@@ -3,12 +3,9 @@ class Search < ActiveRecord::Base
   validates :location, presence: true
 
   belongs_to :user
-  
-  CITIES = {
-    "Boston" => "bos"
-    }
 
-
-
-  CITIES["Boston"]
+  # TODO fill this in with all CL cities; CITIES["Boston"] will return 'bos'
+  # CITIES = {
+  #   'Boston' => 'bos'
+  #   }
 end

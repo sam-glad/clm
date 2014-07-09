@@ -7,6 +7,8 @@
         null,
         1,
         null,
+        null,
+        1,
         null
       ],
       "/Users/samuelgladstone/Dropbox/launchacademy/clm/app/helpers/application_helper.rb": [
@@ -19,8 +21,32 @@
         null,
         1,
         null
+      ],
+      "/Users/samuelgladstone/Dropbox/launchacademy/clm/app/controllers/searches_controller.rb": [
+        1,
+        1,
+        6,
+        6,
+        null,
+        null
+      ],
+      "/Users/samuelgladstone/Dropbox/launchacademy/clm/app/models/search.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null
       ]
     },
-    "timestamp": 1404920004
+    "timestamp": 1404931451
   }
 }
