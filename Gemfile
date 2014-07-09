@@ -36,6 +36,7 @@ end
 
 group :test do
   gem 'coveralls', require: false
+  gem 'launchy'
 end
 
 # Use ActiveModel has_secure_password

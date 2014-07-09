@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'capybara'
 
 feature 'user creates a new user', %Q(
   As a site visitor
@@ -7,7 +8,6 @@ feature 'user creates a new user', %Q(
 ) do
 
   scenario 'user successfully creates a search' do
-
     user = FactoryGirl.create(:user)
     sign_in_as(user)
 
@@ -15,10 +15,10 @@ feature 'user creates a new user', %Q(
 
     visit new_search_path
     fill_in 'Query', with: search.query
-    fill_in 'Location', with: search.location
-    fill_in 'Category', with: search.category
-    fill_in 'min_price', with: search.min_price
-    fill_in 'max_price', with: search.max_price
+    select search.location, from: 'Location'
+    select search.category, from: 'Category'
+    fill_in 'Min Price', with: search.min_price
+    fill_in 'Max Price', with: search.max_price
     click_on 'Submit'
 
     expect(page).to have_content 'Search added!'

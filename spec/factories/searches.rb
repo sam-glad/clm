@@ -5,7 +5,7 @@ FactoryGirl.define do
     user
     sequence(:query) { |n| "guitar #{n}" }
     location 'Ann Arbor'
-    category 'For Sale'
+    category 'for sale'
     min_price 1
     max_price 500
   end
