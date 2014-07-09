@@ -1,0 +1,26 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/samuelgladstone/Dropbox/launchacademy/clm/app/models/user.rb": [
+        1,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/Users/samuelgladstone/Dropbox/launchacademy/clm/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/samuelgladstone/Dropbox/launchacademy/clm/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1404919290
+  }
+}
