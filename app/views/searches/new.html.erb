@@ -1,0 +1,32 @@
+<h2>New Search</h2>
+
+<%= form_for @search do |f| %>
+  <% if @search.errors.any? %>
+    <% @search.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  <% end %>
+
+  <%= f.label :query %>
+  <%= f.text_field :query %>
+  <br>
+
+  <%= f.label :location %>
+  <%= f.select(:location, Search::CITIES.each_key { |city| city },
+  { include_blank: 'select a location' }) %>
+  <br>
+
+  <%= f.label :category %>
+  <%= f.select(:category, Search::CATEGORIES.each_key { |category| category },
+  { include_blank: 'select a category' }) %>
+  <br>
+
+  <%= f.label :min_price, 'Min Price' %>
+  <%= f.text_field :min_price %>
+
+  <%= f.label :max_price, 'Max Price' %>
+  <%= f.text_field :max_price %>
+
+  <%= f.submit 'Submit' %>
+
+<% end %>
