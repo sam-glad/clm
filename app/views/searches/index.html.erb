@@ -2,6 +2,7 @@
 
 <ul>
   <% @searches.each do |search| %>
-    <li><%= search.query %></li> in <%= search.location %></li>
+    <li><%= link_to search.query, search_path(search) %> in
+       <%= search.location %></li>
   <% end %>
 </ul>

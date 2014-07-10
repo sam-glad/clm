@@ -1,10 +1,14 @@
 <h2><%= @search.query %></h2>
 
 <ul>
-  <%= @search.location %>
-  <%= @search.category %>
-  <%= @search.min_price if @search.min_price %>
-  <%= @search.max_price if @search.max_price %>
+  <li><%= @search.location %></li>
+  <li><%= @search.category %></li>
+  <% if @search.min_price %>
+    <li><%= @search.min_price %> </li>
+  <% end %>
+  <% if @search.max_price %>
+    <li><%= @search.max_price %></li>
+  <% end %>
 </ul>
 
 <%= button_to 'Delete', search_path(@search), method: :delete,
