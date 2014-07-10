@@ -1,0 +1,15 @@
+<h2><%= @search.query %></h2>
+
+<ul>
+  <li><%= @search.location %></li>
+  <li><%= @search.category %></li>
+  <% if @search.min_price %>
+    <li><%= @search.min_price %> </li>
+  <% end %>
+  <% if @search.max_price %>
+    <li><%= @search.max_price %></li>
+  <% end %>
+</ul>
+
+<%= button_to 'Delete', search_path(@search), method: :delete,
+  data: { confirm: 'Are you sure you want to delete this search?' } %>

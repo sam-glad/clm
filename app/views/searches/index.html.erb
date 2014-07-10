@@ -1,0 +1,8 @@
+<h2>Your Searches</h2>
+
+<ul>
+  <% @searches.each do |search| %>
+    <li><%= link_to search.query, search_path(search) %> in
+       <%= search.location %></li>
+  <% end %>
+</ul>
