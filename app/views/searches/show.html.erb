@@ -1,0 +1,8 @@
+<h2><%= @search.query %></h2>
+
+<ul>
+  <%= @search.location %>
+  <%= @search.category %>
+  <%= @search.min_price if @search.min_price %>
+  <%= @search.max_price if @search.max_price %>
+</ul>

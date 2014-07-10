@@ -3,6 +3,10 @@ class SearchesController < ApplicationController
     @searches = Search.where(user: current_user)
   end
 
+  def show
+    @search = Search.find(params[:id])
+  end
+
   def new
     @search = Search.new
   end
