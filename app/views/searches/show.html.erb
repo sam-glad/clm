@@ -6,3 +6,6 @@
   <%= @search.min_price if @search.min_price %>
   <%= @search.max_price if @search.max_price %>
 </ul>
+
+<%= button_to 'Delete', search_path(@search), method: :delete,
+  data: { confirm: 'Are you sure you want to delete this search?' } %>

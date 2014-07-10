@@ -24,6 +24,14 @@ class SearchesController < ApplicationController
     end
   end
 
+  def destroy
+    @search = Search.find(params[:id])
+    if @search.destroy
+      flash[:notice] = 'Search deleted!'
+      redirect_to searches_path
+    end
+  end
+
   private
 
   def search_params
