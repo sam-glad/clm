@@ -19,4 +19,18 @@ feature 'user creates a new user', %Q(
       expect(page).to have_content search.location
     end
   end
+
+  scenario 'user tries to view search index page without having signed in' do
+    user = FactoryGirl.create(:user)
+
+    searches = FactoryGirl.create_list(:search, 5, user: user)
+
+    visit searches_path
+    expect(page).to have_content 'You need to sign in or sign up before continuing.'
+    searches.each do |search|
+      expect(page).to_not have_content search.query
+      expect(page).to_not have_content search.location
+    end
+  end
+
 end
