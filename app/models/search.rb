@@ -4,6 +4,7 @@ class Search < ActiveRecord::Base
   validates :user, presence: true
 
   belongs_to :user
+  has_many :posts
 
   CITIES = {
     'Aberdeen' => { short: 'abz', url: 'http://aberdeen.craigslist.co.uk' },
