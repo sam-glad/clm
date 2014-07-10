@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user creates a new user', %Q(
+feature 'user creates a new search', %Q(
   As a site visitor
   I want to create a search
   So that I can keep track of something in which I'm interested
