@@ -41,7 +41,7 @@ feature 'user creates a new user', %Q(
     expect(page).to have_content search.query
   end
 
-  scenario 'user fails to create a search' \
+  scenario 'user fails to create a search ' \
     'without a query, location, or category' do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
@@ -49,9 +49,6 @@ feature 'user creates a new user', %Q(
     search = FactoryGirl.build(:search, user: user)
 
     visit new_search_path
-    fill_in 'Query', with: search.query
-    select search.location, from: 'Location'
-    select search.category, from: 'Category'
     click_on 'Submit'
 
     expect(page).to_not have_content 'Search added!'
