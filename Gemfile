@@ -25,8 +25,12 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
-
+# User authentication
 gem 'devise'
+# Parsing plain-English dates pulled from the scraper
+gem 'chronic'
+# Scrape web pages
+gem 'nokogiri'
 
 group :test, :development do
   gem 'rspec-rails'
