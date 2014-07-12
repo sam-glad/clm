@@ -1,5 +1,5 @@
 class Search < ActiveRecord::Base
-  validates :query, presence: true
+  validates :query, presence: true, uniqueness: true
   validates :location, presence: true
   validates :user, presence: true
 
