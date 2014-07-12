@@ -35,6 +35,10 @@ gem 'nokogiri'
 # Allow for scraping to be done as a background job
 gem 'sidekiq'
 gem 'redis'
+# Sidekiq jobs are automatically run
+gem 'sidetiq', '~> 0.4.3'
+# For Sidekiq monitor
+gem 'sinatra', '>= 1.3.0', require: nil
 
 group :test, :development do
   gem 'rspec-rails'

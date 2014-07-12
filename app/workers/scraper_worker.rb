@@ -38,7 +38,7 @@ class ScraperWorker
       if url.css('p.mapaddress small a').first
         google_maps_url = url.css('p.mapaddress small a').first['href']
       end
-      # Change existing url from Nokogiri::HTML::Documents to string to store
+      # Change url var from Nokogiri::HTML::Document to string to store in DB
       url = root_cl + page_href
 
       @new_post = Post.create({
