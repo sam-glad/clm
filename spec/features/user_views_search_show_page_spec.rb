@@ -12,6 +12,7 @@ feature 'user views a search\'s show page (with prices)', %Q(
 
     search = FactoryGirl.create(:search, user: user,
       min_price: nil, max_price: nil)
+    posts = FactoryGirl.create_list(:post, 5, search: search)
 
     visit search_path(search)
     expect(page).to have_content search.query
@@ -19,6 +20,14 @@ feature 'user views a search\'s show page (with prices)', %Q(
     expect(page).to have_content search.category
     expect(page).to_not have_content 'Min Price'
     expect(page).to_not have_content 'Max Price'
+
+    # Post table
+    posts.each do |post|
+      expect(page).to have_content post.title
+      expect(page).to have_content post.location
+      expect(page).to have_content post.date
+      expect(page).to have_content post.price
+    end
   end
 
   scenario 'user views a search\'s show page' do
@@ -26,6 +35,7 @@ feature 'user views a search\'s show page (with prices)', %Q(
     sign_in_as(user)
 
     search = FactoryGirl.create(:search, user: user)
+    posts = FactoryGirl.create_list(:post, 5, search: search)
 
     visit search_path(search)
     expect(page).to have_content search.query
@@ -33,5 +43,13 @@ feature 'user views a search\'s show page (with prices)', %Q(
     expect(page).to have_content search.category
     expect(page).to have_content search.min_price
     expect(page).to have_content search.max_price
+
+    # Post table
+    posts.each do |post|
+      expect(page).to have_content post.title
+      expect(page).to have_content post.location
+      expect(page).to have_content post.date
+      expect(page).to have_content post.price
+    end
   end
 end
