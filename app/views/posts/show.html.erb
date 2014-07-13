@@ -1,0 +1,10 @@
+<h2><%= @post.title %></h2>
+<p><%= @post.location %> || $<%= @post.price %> || <%= @post.date %></p>
+
+<p><%= @post.body %></p>
+
+<% if @post.google_maps_url %>
+  <%= link_to 'Google Maps', @post.google_maps_url %> </p>
+<% end %>
+
+<p><%= link_to 'View the original posting', @post.url %></p>

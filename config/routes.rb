@@ -2,7 +2,9 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :searches, only: [:index, :new, :create, :show, :destroy]
+  resources :searches, only: [:index, :new, :create, :show, :destroy] do
+    resources :posts, only: [:show]
+  end
 
   authenticate :user, lambda {|u| u.admin? } do
     mount Sidekiq::Web, at: '/sidekiq'
