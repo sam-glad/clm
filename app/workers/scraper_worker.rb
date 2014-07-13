@@ -9,6 +9,7 @@ class ScraperWorker
       "#{root_cl}/search/#{short_category}?query=#{short_query}"
     short_search_url += "&minAsk=#{search.min_price}" if search.min_price
     short_search_url += "&maxAsk=#{search.max_price}" if search.max_price
+    short_search_url += '&hasPic=1'
     short_search_url
   end
 

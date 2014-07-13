@@ -18,6 +18,7 @@ feature 'user creates a new search', %Q(
     select search.category, from: 'Category'
     fill_in 'Min Price', with: search.min_price
     fill_in 'Max Price', with: search.max_price
+    check 'has_img'
     click_on 'Submit'
 
     expect(page).to have_content 'Search added!'
