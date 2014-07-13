@@ -8,6 +8,7 @@ class SearchesController < ApplicationController
 
   def show
     @search = Search.find(params[:id])
+    @posts = @search.posts
   end
 
   def new
@@ -44,6 +45,6 @@ class SearchesController < ApplicationController
 
   def search_params
     params.require(:search).permit(:query, :location, :category,
-      :min_price, :max_price)
+      :min_price, :max_price, :has_img)
   end
 end
