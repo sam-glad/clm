@@ -14,6 +14,9 @@
   <ul>
     <li><%= link_to 'My Searches', searches_path %></li>
     <li><%= link_to 'New Search', new_search_path %></li>
+    <% if current_user && current_user.admin? %>
+      <li><%= link_to 'Sidekiq Dashboard', sidekiq_web_path %></li>
+    <% end %>
   </ul>
 
   <%= yield %>
