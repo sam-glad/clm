@@ -2,11 +2,11 @@ class UpdateAllSearchesWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
-  recurrence { daily }
+  recurrence { daily.hour_of_day(6) }
 
   def perform
-    Search.pluck(:ids).each do |search_id|
-      time_to_perform = rand(800..1400).minutes.from_now.from_now
+    Search.pluck(:id).each do |search_id|
+      time_to_perform = rand(0.0..747.0).minutes.from_now
       ScraperWorker.perform_at(time_to_perform, search_id)
     end
   end
