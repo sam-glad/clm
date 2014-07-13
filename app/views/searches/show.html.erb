@@ -2,14 +2,35 @@
 
 <ul>
   <li><%= @search.location %></li>
-  <li><%= @search.category %></li>
+  <li>Category: <%= @search.category %></li>
   <% if @search.min_price %>
-    <li><%= @search.min_price %> </li>
+    <li>Min Price: $<%= @search.min_price %> </li>
   <% end %>
   <% if @search.max_price %>
-    <li><%= @search.max_price %></li>
+    <li>Max Price: $<%= @search.max_price %></li>
   <% end %>
 </ul>
+
+<h2> Results </h2>
+
+<% if @posts %>
+  <table border="1">
+    <tr>
+      <th>Title</th>
+      <th>Location</th>
+      <th>Date</th>
+      <th>Price</th>
+    </tr>
+    <% @posts.each do |post| %>
+      <tr>
+        <td style="padding:1px 10px 1px 10px"><%= post.title %></td>
+        <td align="center" style="padding:0px 10px 0px 10px"><%= post.location %></td>
+        <td style="padding:1px 10px 1px 10px"><%= post.date %></td>
+        <td style="padding:1px 10px 1px 10px">$<%= post.price %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
 
 <%= button_to 'Delete', search_path(@search), method: :delete,
   data: { confirm: 'Are you sure you want to delete this search?' } %>
