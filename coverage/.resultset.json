@@ -9,6 +9,10 @@
         null,
         null,
         1,
+        24,
+        null,
+        null,
+        1,
         null
       ],
       "/Users/samuelgladstone/Dropbox/launchacademy/clm/app/helpers/application_helper.rb": [
@@ -28,7 +32,7 @@
         1,
         1,
         1,
-        14,
+        16,
         null,
         null,
         1,
@@ -923,6 +927,6 @@
         null
       ]
     },
-    "timestamp": 1405224297
+    "timestamp": 1405273656
   }
 }
