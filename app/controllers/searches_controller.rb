@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class SearchesController < ApplicationController
   before_action :authenticate_user!
   def index
@@ -18,6 +20,7 @@ class SearchesController < ApplicationController
 
     if @search.save
       flash[:notice] = 'Search added!'
+      scrape(@search.id)
       redirect_to searches_path
     else
       flash[:notice] = 'Oops! Check your error messages below.'
@@ -31,6 +34,10 @@ class SearchesController < ApplicationController
       flash[:notice] = 'Search deleted!'
       redirect_to searches_path
     end
+  end
+
+  def scrape(search_id)
+    ScraperWorker.perform_async(search_id)
   end
 
   private

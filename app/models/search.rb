@@ -1,9 +1,10 @@
 class Search < ActiveRecord::Base
-  validates :query, presence: true
+  validates :query, presence: true, uniqueness: true
   validates :location, presence: true
   validates :user, presence: true
 
   belongs_to :user
+  has_many :posts, dependent: :destroy
 
   CITIES = {
     'Aberdeen' => { short: 'abz', url: 'http://aberdeen.craigslist.co.uk' },
