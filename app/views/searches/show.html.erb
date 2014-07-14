@@ -9,6 +9,9 @@
   <% if @search.max_price %>
     <li>Max Price: $<%= @search.max_price %></li>
   <% end %>
+  <% if @search.run_time %>
+    <li>Next search at <%= @search.run_time %></li>
+  <% end %>
 </ul>
 
 <h2> Results </h2>

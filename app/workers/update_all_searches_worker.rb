@@ -5,9 +5,10 @@ class UpdateAllSearchesWorker
   recurrence { daily.hour_of_day(6) }
 
   def perform
-    Search.pluck(:id).each do |search_id|
-      time_to_perform = rand(0.0..747.0).minutes.from_now
-      ScraperWorker.perform_at(time_to_perform, search_id)
+    Search.find_each.each do |search|
+      time_to_perform = Time.zone.now + rand(0.0..747.0).minutes
+      search.update!(run_time: time_to_perform)
+      ScraperWorker.perform_at(time_to_perform, search.id)
     end
   end
 end
