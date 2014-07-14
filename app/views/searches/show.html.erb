@@ -27,10 +27,8 @@
           <%= link_to post.title, search_post_path(post.search, post) %></td>
         <td align="center" style="padding:0px 10px 0px 10px">
           <%= post.location %></td>
-        <td style="padding:1px 10px 1px 10px">
-          <%= post.date %></td>
-        <td style="padding:1px 10px 1px 10px">$
-          <%= post.price %></td>
+        <td style="padding:1px 10px 1px 10px"><%= post.date %></td>
+        <td style="padding:1px 10px 1px 10px">$<%= post.price %></td>
       </tr>
     <% end %>
   </table>
