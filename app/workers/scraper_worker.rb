@@ -23,7 +23,7 @@ class ScraperWorker
     root_cl = Search::CITIES[search.location][:url]
     doc = Nokogiri::HTML(open(build_search_url(search)))
     rows_scraped = 0
-    max_rows_scraped = rand(2..5)
+    max_rows_scraped = 1
 
     doc.css('p.row').each do |row|
       # .text method removes HTML tags

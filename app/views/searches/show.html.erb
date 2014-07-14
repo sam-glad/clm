@@ -9,9 +9,15 @@
   <% if @search.max_price %>
     <li>Max Price: $<%= @search.max_price %></li>
   <% end %>
+  <% if @search.run_time %>
+    <li>Next search at <%= @search.run_time %></li>
+  <% end %>
 </ul>
 
 <h2> Results </h2>
+
+<p>If only see a few results and you just recently entered a new serach,
+try checking back in 5-10 minutes.</p>
 
 <% if @posts %>
   <table border="1">
@@ -27,10 +33,8 @@
           <%= link_to post.title, search_post_path(post.search, post) %></td>
         <td align="center" style="padding:0px 10px 0px 10px">
           <%= post.location %></td>
-        <td style="padding:1px 10px 1px 10px">
-          <%= post.date %></td>
-        <td style="padding:1px 10px 1px 10px">$
-          <%= post.price %></td>
+        <td style="padding:1px 10px 1px 10px"><%= post.date %></td>
+        <td style="padding:1px 10px 1px 10px">$<%= post.price %></td>
       </tr>
     <% end %>
   </table>
