@@ -13,11 +13,13 @@
     <li>Next search at <%= @search.run_time %></li>
   <% end %>
 </ul>
+<br>
 
 <h2> Results </h2>
 
 <p>If only see a few results and you just recently entered a new serach,
 try checking back in 5-10 minutes.</p>
+<br>
 <br>
 
 <% if @posts %>
@@ -41,7 +43,9 @@ try checking back in 5-10 minutes.</p>
       <% end %>
     </table>
   </div>
-  <% end %>
+<% end %>
 
-<%= button_to 'Delete', search_path(@search), method: :delete,
-  data: { confirm: 'Are you sure you want to delete this search?' } %>
+<div class="center">
+  <%= button_to 'Delete', search_path(@search), method: :delete,
+    data: { confirm: 'Are you sure you want to delete this search?' } %>
+</div>
