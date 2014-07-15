@@ -11,25 +11,40 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
-  <ul>
-    <li><%= link_to 'My Searches', searches_path %></li>
-    <li><%= link_to 'New Search', new_search_path %></li>
-    <% if current_user && current_user.admin? %>
-      <li><%= link_to 'Sidekiq Dashboard', sidekiq_web_path %></li>
-    <% end %>
-  </ul>
+  <header class="page-header">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="<%= searches_path %>">Craigmonster</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav" style="float: right">
+            <li><%= link_to 'My Searches', searches_path %></li>
+            <li><%= link_to 'New Search', new_search_path %></li>
+            <% if current_user && current_user.admin? %>
+              <li><%= link_to 'Sidekiq Dashboard', sidekiq_web_path %></li>
+            <% end %>
+            <% if user_signed_in? %>
+              <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li style=""><%= link_to 'Login', new_user_session_path, method: :get %></li>
+              <li><%= link_to 'Sign Up', new_user_registration_path, method: :get %></li>
+            <% end %>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </header>
 
-  <%= yield %>
-
-  <br>
-  <ul>
-    <% if user_signed_in? %>
-      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <li><%= link_to 'Login', new_user_session_path, method: :get %></li>
-      <li><%= link_to 'Sign Up', new_user_registration_path, method: :get %></li>
-    <% end %>
-  </ul>
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

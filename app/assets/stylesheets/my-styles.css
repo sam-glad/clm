@@ -1,0 +1,14 @@
+/******************** Custom Styling ************************/
+.postTable {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.tableHeader {
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.center {
+  text-align: center;
+}
