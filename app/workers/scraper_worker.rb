@@ -19,6 +19,8 @@ class ScraperWorker
   end
 
   def perform(search_id)
+    RestClient.proxy = ENV["PROXIMO_URL"] if ENV["PROXIMO_URL"]
+    
     search = Search.find(search_id)
     root_cl = Search::CITIES[search.location][:url]
     res = RestClient.get(build_search_url(search))
