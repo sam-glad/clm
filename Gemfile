@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
@@ -38,6 +40,8 @@ gem 'redis'
 gem 'sidetiq', '~> 0.4.3'
 # For Sidekiq monitor
 gem 'sinatra', '>= 1.3.0', require: nil
+# For deployment to Heroku
+gem 'rails_12factor', group: :production
 
 group :test, :development do
   gem 'rspec-rails'
@@ -55,7 +59,11 @@ end
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+group :production do
+  gem 'unicorn'
+  gem 'unicorn-rails'
+  gem 'foreman'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
