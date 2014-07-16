@@ -42,6 +42,8 @@ gem 'sidetiq', '~> 0.4.3'
 gem 'sinatra', '>= 1.3.0', require: nil
 # For deployment to Heroku
 gem 'rails_12factor', group: :production
+# For use with Proximo
+gem 'rest-client'
 
 group :test, :development do
   gem 'rspec-rails'

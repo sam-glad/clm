@@ -21,7 +21,8 @@ class ScraperWorker
   def perform(search_id)
     search = Search.find(search_id)
     root_cl = Search::CITIES[search.location][:url]
-    doc = Nokogiri::HTML(open(build_search_url(search)))
+    res = RestClient.get(build_search_url(search))
+    doc = Nokogiri::HTML(open(res))
     rows_scraped = 0
     max_rows_scraped = 1
 
