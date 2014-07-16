@@ -12,12 +12,17 @@
   <% if @search.run_time %>
     <li>Next search at <%= @search.run_time %></li>
   <% end %>
+  <% if @search.active %>
+    <li>Automatically updating daily</li>
+  <% else %>
+    <li>No longer updating daily</li>
+  <% end %>
 </ul>
 <br>
 
 <h2> Results </h2>
 
-<p>If only see a few results and you just recently entered a new serach,
+<p>If only see a few results and you just recently entered a new search,
 try checking back in 5-10 minutes.</p>
 <br>
 <br>
@@ -43,6 +48,13 @@ try checking back in 5-10 minutes.</p>
       <% end %>
     </table>
   </div>
+<% end %>
+
+<%= form_for @search, url: search_path(@search), method: :patch do |f| %>
+  <%= f.check_box(:active) %>
+  <%= f.label(:active, 'Continue updating this search daily') %>
+  <%= f.submit 'Update preference' %>
+  <br>
 <% end %>
 
 <div class="center">

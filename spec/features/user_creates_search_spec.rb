@@ -18,7 +18,7 @@ feature 'user creates a new search', %Q(
     select search.category, from: 'Category'
     fill_in 'Min Price', with: search.min_price
     fill_in 'Max Price', with: search.max_price
-    check 'has_img'
+    check 'Only include posts with images'
     click_on 'Submit'
 
     expect(page).to have_content 'Search added!'
@@ -60,8 +60,6 @@ feature 'user creates a new search', %Q(
 
   scenario 'user tries to enter new search page without having signed in' do
     user = FactoryGirl.create(:user)
-
-    searches = FactoryGirl.create_list(:search, 5, user: user)
 
     visit new_search_path
     expect(page).to have_content 'You need to sign in or sign up ' \

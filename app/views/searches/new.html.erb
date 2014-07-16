@@ -28,8 +28,8 @@
   <%= f.text_field :max_price %>
   <br>
 
-  <%= check_box_tag(:has_img) %>
-  <%= label_tag(:has_img, 'Only include posts with images') %>
+  <%= f.check_box(:has_img) %>
+  <%= f.label(:has_img, 'Only include posts with images') %>
   <br>
 
   <%= f.submit 'Submit' %>
