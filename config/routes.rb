@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :searches, only: [:index, :new, :create, :show, :destroy] do
+  resources :searches, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
     resources :posts, only: [:show]
   end
 

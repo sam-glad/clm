@@ -29,6 +29,12 @@ class SearchesController < ApplicationController
     end
   end
 
+  def update
+    @search = Search.find(params[:id])
+    @search.update(search_edit_params)
+    redirect_to search_path(@search)
+  end
+
   def destroy
     @search = Search.find(params[:id])
     if @search.destroy
@@ -46,5 +52,9 @@ class SearchesController < ApplicationController
   def search_params
     params.require(:search).permit(:query, :location, :category,
       :min_price, :max_price, :has_img)
+  end
+
+  def search_edit_params
+    params.require(:search).permit(:active)
   end
 end
