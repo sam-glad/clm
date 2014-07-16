@@ -12,6 +12,11 @@
   <% if @search.run_time %>
     <li>Next search at <%= @search.run_time %></li>
   <% end %>
+  <% if search.active %>
+    <li>Automatically updating daily</li>
+  <% else %>
+    <li>No longer updating daily</li>
+  <% end %>
 </ul>
 <br>
 
