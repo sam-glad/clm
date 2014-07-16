@@ -20,11 +20,11 @@ class ScraperWorker
 
   def perform(search_id)
     RestClient.proxy = ENV["PROXIMO_URL"] if ENV["PROXIMO_URL"]
-    
+
     search = Search.find(search_id)
     root_cl = Search::CITIES[search.location][:url]
     res = RestClient.get(build_search_url(search))
-    doc = Nokogiri::HTML(open(res))
+    doc = Nokogiri::HTML(res)
     rows_scraped = 0
     max_rows_scraped = 1
 
