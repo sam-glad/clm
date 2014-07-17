@@ -11,6 +11,8 @@ feature 'user deletes a search', %Q(
     sign_in_as(user)
 
     search1 = FactoryGirl.create(:search, user: user)
+    posts = FactoryGirl.create_list(:post, 5, search: search1)
+
     search2 = FactoryGirl.create(:search, user: user)
 
     visit search_path(search1)
@@ -18,6 +20,7 @@ feature 'user deletes a search', %Q(
 
     expect(page).to have_content 'Search deleted!'
     expect(page).to_not have_content search1.query
+    expect(Post.count).to eq 0
     expect(page).to have_content search2.query
   end
 
