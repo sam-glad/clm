@@ -18,11 +18,15 @@ feature 'user creates a new search', %Q(
     select search.category, from: 'Category'
     fill_in 'Min Price', with: search.min_price
     fill_in 'Max Price', with: search.max_price
-    check 'Only include posts with images'
     click_on 'Submit'
 
     expect(page).to have_content 'Search added!'
     expect(page).to have_content search.query
+
+    click_on search.query
+    expect(page).to have_content "Min Price: $#{search.min_price}"
+    expect(page).to have_content "Max Price: $#{search.max_price}"
+    expect(search.has_img).to eq false
   end
 
   scenario 'user creates a search with no min/max prices' do
@@ -35,10 +39,16 @@ feature 'user creates a new search', %Q(
     fill_in 'Query', with: search.query
     select search.location, from: 'Location'
     select search.category, from: 'Category'
+    check 'Only include posts with images'
     click_on 'Submit'
 
     expect(page).to have_content 'Search added!'
     expect(page).to have_content search.query
+
+    click_on search.query
+    expect(page).to_not have_content 'Min price'
+    expect(page).to_not have_content 'Max price'
+    expect(Search.first.has_img).to eq true
   end
 
   scenario 'user fails to create a search ' \
@@ -70,5 +80,4 @@ feature 'user creates a new search', %Q(
     expect(page).to_not have_content 'Min Price'
     expect(page).to_not have_content 'Max Price'
   end
-
 end

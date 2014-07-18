@@ -52,4 +52,16 @@ feature 'user views a search\'s show page (with prices)', %Q(
       expect(page).to have_content post.price
     end
   end
+
+  scenario 'user has search stop updating' do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
+    search = FactoryGirl.create(:search, user: user)
+
+    visit search_path(search)
+    uncheck 'Continue updating this search daily'
+    click_on 'Update preference'
+    expect(Search.find(search.id).active).to eq false
+  end
 end
