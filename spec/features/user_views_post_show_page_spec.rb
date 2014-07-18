@@ -39,5 +39,4 @@ feature 'user views a post\'s show page', %Q(
     expect(page).to_not have_content 'Google Maps'
     expect(page).to have_link('View the original posting', href: post.url)
   end
-
 end

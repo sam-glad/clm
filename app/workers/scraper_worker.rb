@@ -4,12 +4,12 @@ class ScraperWorker
   def build_search_url(search)
     root_cl = Search::CITIES[search.location][:url]
     short_category = Search::CATEGORIES[search.category][:short]
-    short_query = search.query.gsub!(/\s+/, '+')
+    short_query = search.query.gsub(/\s+/, '+')
     short_search_url =
       "#{root_cl}/search/#{short_category}?query=#{short_query}"
     short_search_url += "&minAsk=#{search.min_price}" if search.min_price
     short_search_url += "&maxAsk=#{search.max_price}" if search.max_price
-    short_search_url += '&hasPic=1'
+    short_search_url += '&hasPic=1' if search.has_img
     short_search_url
   end
 
@@ -23,7 +23,7 @@ class ScraperWorker
     root_cl = Search::CITIES[search.location][:url]
     doc = Nokogiri::HTML(open(build_search_url(search)))
     rows_scraped = 0
-    max_rows_scraped = 1
+    max_rows_scraped = 5
 
     doc.css('p.row').each do |row|
       # .text method removes HTML tags
