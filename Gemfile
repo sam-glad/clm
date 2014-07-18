@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+# Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -33,6 +33,7 @@ gem 'devise'
 gem 'chronic'
 # Scrape web pages
 gem 'nokogiri'
+gem 'restclient'
 # Allow for scraping to be done as a background job
 gem 'sidekiq'
 gem 'redis'
@@ -40,8 +41,6 @@ gem 'redis'
 gem 'sidetiq', '~> 0.4.3'
 # For Sidekiq monitor
 gem 'sinatra', '>= 1.3.0', require: nil
-# For deployment to Heroku
-gem 'rails_12factor', group: :production
 
 group :test, :development do
   gem 'rspec-rails'
@@ -60,6 +59,7 @@ end
 
 # Use unicorn as the app server
 group :production do
+  gem 'rails_12factor'
   gem 'unicorn'
   gem 'unicorn-rails'
   gem 'foreman'
