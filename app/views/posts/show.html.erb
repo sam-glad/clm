@@ -3,8 +3,12 @@
 
 <p><%= @post.body %></p>
 
-<% if @post.google_maps_url %>
-  <%= link_to 'Google Maps', @post.google_maps_url %> </p>
+<% if @post.address %>
+  <p>Approximate address (verify with seller!): <%= @post.address %></p>
+<% end %>
+
+<% if @post.longitude && @post.latitude %>
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@post.latitude}%2C#{@post.longitude}" %>
 <% end %>
 
 <p><%= link_to 'View the original posting', @post.url %></p>
