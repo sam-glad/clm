@@ -6,9 +6,18 @@
 <% if @post.address %>
   <p>Approximate address (verify with seller!): <%= @post.address %></p>
 <% end %>
+<br>
 
 <% if @post.longitude && @post.latitude %>
-  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@post.latitude}%2C#{@post.longitude}" %>
+  <iframe
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=<%= @gmaps_key %>&q=<%= @post.address %>">
+  </iframe>
 <% end %>
+<br>
+<br>
 
 <p><%= link_to 'View the original posting', @post.url %></p>
+<br>
