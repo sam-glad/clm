@@ -10,15 +10,15 @@ class Search < ActiveRecord::Base
     RestClient.get(url)
   end
 
-  def root_cl_url
-    Search::CITIES[self.location][:url]
+  def root_cl
+    Search::CITIES[location][:url]
   end
 
   def url
-    short_category = Search::CATEGORIES[self.category][:short]
+    short_category = Search::CATEGORIES[category][:short]
     short_query = self.query.gsub(/\s+/, '+')
     short_search_url =
-      "#{self.root_cl_url}/search/#{short_category}?query=#{short_query}"
+      "#{self.root_cl}/search/#{short_category}?query=#{short_query}"
     short_search_url += "&minAsk=#{self.min_price}" if self.min_price
     short_search_url += "&maxAsk=#{self.max_price}" if self.max_price
     short_search_url += '&hasPic=1' if self.has_img
@@ -27,12 +27,12 @@ class Search < ActiveRecord::Base
 
   def fetch_results
     html = Nokogiri::HTML(open_page(url))
-    rows_to_scrape = 1
+    rows_to_scrape = 1 # Temporary limit
 
     results = html.css('p.row')[0..rows_to_scrape].map do |row|
-      result = CraigslistResult.new(row, self)
+      result = CraigslistResult.new(row, self, root_cl)
       # Wait a random amount of time so they don't throttle me
-      # sleep(rand(13.0..47.0))
+      sleep(rand(13.0..47.0))
       result
     end
     results
@@ -45,7 +45,6 @@ class Search < ActiveRecord::Base
   def update_results
     results.each do |result|
       Post.find_or_create_from_craigslist_result(result)
-      # result.save if result.new? # TODO: check HREF/make unique
     end
   end
 

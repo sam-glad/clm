@@ -1,10 +1,13 @@
 class CraigslistResult
-  attr_accessor :html
-  attr_reader :search
+  attr_accessor :html, :url, :fetched_show_page
+  attr_reader :search, :root_cl
 
-  def initialize(row, search)
+  def initialize(row, search, root_cl)
     @html = row
     @search = search
+    @root_cl = root_cl
+    @url = root_cl + page_href
+    @fetched_show_page = open_page(url)
   end
 
   def title
@@ -33,7 +36,24 @@ class CraigslistResult
     @page_href = html.css('span.pl a').first['href']
   end
 
-  def open_page(url)
-    RestClient.get(url)
+  def url
+    @url = @root_cl + @page_href
+  end
+
+  # ========================== Show-page-specific info==========================
+
+  def open_page(link)
+    RestClient.get(link)
+  end
+
+  def body
+    @body = Nokogiri::HTML(@fetched_show_page).css('section#postingbody').text
+  end
+
+  def gmaps_url
+    if Nokogiri::HTML(@fetched_show_page).css('p.mapaddress small a').first
+      @gmaps_url = Nokogiri::HTML(@fetched_show_page).css(
+      'p.mapaddress small a').first['href']
+    end
   end
 end
