@@ -16,12 +16,12 @@ class Search < ActiveRecord::Base
 
   def url
     short_category = Search::CATEGORIES[category][:short]
-    short_query = self.query.gsub(/\s+/, '+')
+    short_query = query.gsub(/\s+/, '+')
     short_search_url =
-      "#{self.root_cl}/search/#{short_category}?query=#{short_query}"
-    short_search_url += "&minAsk=#{self.min_price}" if self.min_price
-    short_search_url += "&maxAsk=#{self.max_price}" if self.max_price
-    short_search_url += '&hasPic=1' if self.has_img
+      "#{root_cl}/search/#{short_category}?query=#{short_query}"
+    short_search_url += "&minAsk=#{min_price}" if min_price
+    short_search_url += "&maxAsk=#{max_price}" if max_price
+    short_search_url += '&hasPic=1' if has_img
     short_search_url
   end
 
