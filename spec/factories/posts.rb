@@ -12,6 +12,6 @@ FactoryGirl.define do
     url 'http://boston.craigslist.org/bmw/msg/1234567890.html'
     latitude 45.0
     longitude 45.0
-    address '123 Fake St., Springfield, USA'
+    address 'P263, Stavropol Krai, Russia'
   end
 end
