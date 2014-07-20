@@ -6,6 +6,48 @@ class Search < ActiveRecord::Base
   belongs_to :user
   has_many :posts, dependent: :destroy
 
+  def open_page(url)
+    RestClient.get(url)
+  end
+
+  def root_cl
+    Search::CITIES[location][:url]
+  end
+
+  def url
+    short_category = Search::CATEGORIES[category][:short]
+    short_query = query.gsub(/\s+/, '+')
+    short_search_url =
+      "#{root_cl}/search/#{short_category}?query=#{short_query}"
+    short_search_url += "&minAsk=#{min_price}" if min_price
+    short_search_url += "&maxAsk=#{max_price}" if max_price
+    short_search_url += '&hasPic=1' if has_img
+    short_search_url
+  end
+
+  def fetch_results
+    html = Nokogiri::HTML(open_page(url))
+    rows_to_scrape = 1 # Temporary limit
+
+    results = html.css('p.row')[0..rows_to_scrape].map do |row|
+      result = CraigslistResult.new(row, self, root_cl)
+      # Wait a random amount of time so they don't throttle me
+      sleep(rand(13.0..47.0))
+      result
+    end
+    results
+  end
+
+  def results
+    @results ||= fetch_results
+  end
+
+  def update_results
+    results.each do |result|
+      Post.find_or_create_from_craigslist_result(result)
+    end
+  end
+
   CITIES = {
     'Aberdeen' => { short: 'abz', url: 'http://aberdeen.craigslist.co.uk' },
     'Abilene' => { short: 'abi', url: 'http://abilene.craigslist.org' },

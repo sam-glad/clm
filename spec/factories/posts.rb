@@ -8,7 +8,7 @@ FactoryGirl.define do
     location 'Ann Arbor'
     date Date.parse(Chronic.parse('now').to_s)
     body 'Lots of drums!'
-    page_href '/bmw/msg/1234567890.html'
+    sequence(:page_href) { |n| "/bmw/msg/12345#{n}7890.html" }
     url 'http://boston.craigslist.org/bmw/msg/1234567890.html'
     google_maps_url 'https://maps.google.com/maps/preview/@50,-50,16z'
   end
