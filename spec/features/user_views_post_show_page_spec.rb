@@ -28,7 +28,8 @@ feature 'user views a post\'s show page', %Q(
     sign_in_as(user)
 
     search = FactoryGirl.create(:search, user: user)
-    post = FactoryGirl.create(:post, search: search, google_maps_url: nil)
+    post = FactoryGirl.create(:post, search: search, latitude: nil,
+      longitude: nil, address: nil)
 
     visit search_path(search)
     click_on post.title
@@ -36,7 +37,7 @@ feature 'user views a post\'s show page', %Q(
     expect(page).to have_content post.location
     expect(page).to have_content post.price
     expect(page).to have_content post.date
-    expect(page).to_not have_content 'Google Maps'
+    expect(page).to_not have_content 'Approximate address'
     expect(page).to have_link('View the original posting', href: post.url)
   end
 end
