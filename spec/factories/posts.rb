@@ -10,6 +10,8 @@ FactoryGirl.define do
     body 'Lots of drums!'
     sequence(:page_href) { |n| "/bmw/msg/12345#{n}7890.html" }
     url 'http://boston.craigslist.org/bmw/msg/1234567890.html'
-    google_maps_url 'https://maps.google.com/maps/preview/@50,-50,16z'
+    latitude 45.0
+    longitude 45.0
+    address '123 Fake St., Springfield, USA'
   end
 end

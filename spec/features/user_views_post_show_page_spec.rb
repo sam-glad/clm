@@ -19,7 +19,7 @@ feature 'user views a post\'s show page', %Q(
     expect(page).to have_content post.location
     expect(page).to have_content post.price
     expect(page).to have_content post.date
-    expect(page).to have_link('Google Maps', href: post.google_maps_url)
+    expect(page).to have_content post.address
     expect(page).to have_link('View the original posting', href: post.url)
   end
 
