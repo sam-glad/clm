@@ -43,6 +43,8 @@ gem 'sidetiq', '~> 0.4.3'
 gem 'sinatra', '>= 1.3.0', require: nil
 # Link coords from broken Craigslist maps to Google Maps
 gem 'geocoder'
+# Pull from .env
+gem 'dotenv-rails'
 
 group :test, :development do
   gem 'rspec-rails'
