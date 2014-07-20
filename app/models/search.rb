@@ -27,9 +27,9 @@ class Search < ActiveRecord::Base
 
   def fetch_results
     html = Nokogiri::HTML(open_page(url))
-    rows_to_scrape = 1 # Temporary limit
+    rows_to_scrape = 5 # Temporary limit
 
-    results = html.css('p.row')[0..rows_to_scrape].map do |row|
+    results = html.css('p.row')[1..rows_to_scrape].map do |row|
       result = CraigslistResult.new(row, self, root_cl)
       # Wait a random amount of time so they don't throttle me
       sleep(rand(13.0..47.0))

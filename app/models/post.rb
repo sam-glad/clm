@@ -6,6 +6,9 @@ class Post < ActiveRecord::Base
   validates :page_href, presence: true, uniqueness: true
   validates :url, presence: true
 
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode  # auto-fetch address
+
   def self.find_or_create_from_craigslist_result(result)
     @post = Post.find_by(url: result.url)
 
@@ -14,14 +17,16 @@ class Post < ActiveRecord::Base
         search: result.search, url: result.url, title: result.title,
         price: result.price, location: result.location, date: result.date,
         page_href: result.page_href, body: result.body,
-        google_maps_url: result.gmaps_url
+        google_maps_url: result.gmaps_url, latitude: result.latitude,
+        longitude: result.longitude
         )
     else
       @post.update(
         search: result.search, url: result.url, title: result.title,
         price: result.price, location: result.location, date: result.date,
         page_href: result.page_href, body: result.body,
-        google_maps_url: result.gmaps_url
+        google_maps_url: result.gmaps_url, latitude: result.latitude, 
+        longitude: result.longitude
         )
     end
   end

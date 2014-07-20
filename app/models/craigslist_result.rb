@@ -56,4 +56,16 @@ class CraigslistResult
       'p.mapaddress small a').first['href']
     end
   end
+
+  def latitude
+    if Nokogiri::HTML(@fetched_show_page).css('div#map').first
+      @latitude = Nokogiri::HTML(@fetched_show_page).css('div#map').first['data-latitude'].to_f
+    end
+  end
+
+  def longitude
+    if Nokogiri::HTML(@fetched_show_page).css('div#map').first
+      @longitude = Nokogiri::HTML(@fetched_show_page).css('div#map').first['data-longitude'].to_f
+    end
+  end
 end
