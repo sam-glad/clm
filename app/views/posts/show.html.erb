@@ -1,4 +1,4 @@
-<div class="jumbotron"
+<div class="jumbotron">
   <div class="container">
     <h2><%= @post.title %></h2>
     <p><%= @post.location %> || $<%= @post.price %> || <%= @post.date %></p>
@@ -9,6 +9,12 @@
       <p>Approximate address (verify with seller!): <%= @post.address %></p>
     <% end %>
     <br>
+
+    <% if @imgs %>
+      <% @imgs.each do |img| %>
+        <img src="<%= img.img_url %>">
+      <% end %>
+    <% end %>
 
     <% if @post.longitude && @post.latitude %>
       <div align="center">
