@@ -50,13 +50,6 @@ class CraigslistResult
     @body = Nokogiri::HTML(@fetched_show_page).css('section#postingbody').text
   end
 
-  def gmaps_url
-    if Nokogiri::HTML(@fetched_show_page).css('p.mapaddress small a').first
-      @gmaps_url = Nokogiri::HTML(@fetched_show_page).css(
-      'p.mapaddress small a').first['href']
-    end
-  end
-
   def latitude
     if Nokogiri::HTML(@fetched_show_page).css('div#map').first
       @latitude = Nokogiri::HTML(@fetched_show_page).css('div#map').first['data-latitude'].to_f
@@ -66,6 +59,16 @@ class CraigslistResult
   def longitude
     if Nokogiri::HTML(@fetched_show_page).css('div#map').first
       @longitude = Nokogiri::HTML(@fetched_show_page).css('div#map').first['data-longitude'].to_f
+    end
+  end
+
+  def imgs
+    if Nokogiri::HTML(@fetched_show_page).css('div#thumbs a').first
+      @imgs = []
+      Nokogiri::HTML(@fetched_show_page).css('div#thumbs a').each do |pic|
+        @imgs << pic['href']
+      end
+      @imgs
     end
   end
 end

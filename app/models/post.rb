@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :search
+  has_many :images
 
   validates :search, presence: true
   validates :title, presence: true
@@ -17,16 +18,17 @@ class Post < ActiveRecord::Base
         search: result.search, url: result.url, title: result.title,
         price: result.price, location: result.location, date: result.date,
         page_href: result.page_href, body: result.body,
-        google_maps_url: result.gmaps_url, latitude: result.latitude,
-        longitude: result.longitude
+        latitude: result.latitude, longitude: result.longitude
         )
+      result.imgs.each do |img|
+        Image.create(post: @post, img_url: img)
+      end
     else
       @post.update(
         search: result.search, url: result.url, title: result.title,
         price: result.price, location: result.location, date: result.date,
         page_href: result.page_href, body: result.body,
-        google_maps_url: result.gmaps_url, latitude: result.latitude, 
-        longitude: result.longitude
+        latitude: result.latitude, longitude: result.longitude
         )
     end
   end
