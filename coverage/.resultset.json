@@ -9,7 +9,7 @@
         null,
         null,
         1,
-        35,
+        31,
         null,
         null,
         1,
@@ -32,12 +32,12 @@
         1,
         1,
         1,
-        19,
+        17,
         null,
         null,
         1,
-        9,
-        9,
+        7,
+        7,
         null,
         null,
         1,
@@ -51,7 +51,7 @@
         3,
         2,
         2,
-        2,
+        0,
         null,
         1,
         1,
@@ -955,10 +955,19 @@
         1,
         2,
         2,
+        2,
         null,
+        null
+      ],
+      "/Users/samuelgladstone/Dropbox/launchacademy/clm/app/models/image.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
         null
       ]
     },
-    "timestamp": 1405949376
+    "timestamp": 1405970690
   }
 }
