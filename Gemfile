@@ -45,6 +45,8 @@ gem 'sinatra', '>= 1.3.0', require: nil
 gem 'geocoder'
 # Pull from .env
 gem 'dotenv-rails'
+# For use with Proximo
+gem 'rest-client'
 
 group :test, :development do
   gem 'rspec-rails'
