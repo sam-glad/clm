@@ -10,6 +10,12 @@
     <% end %>
     <br>
 
+    <% if @imgs %>
+      <% @imgs.each do |img| %>
+        <img src="<%= img.img_url %>">
+      <% end %>
+    <% end %>
+
     <% if @post.longitude && @post.latitude %>
       <div align="center">
         <iframe
