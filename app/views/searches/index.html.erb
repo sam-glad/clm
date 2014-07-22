@@ -1,8 +1,17 @@
-<h2>Your Searches</h2>
+<div class="jumbotron">
+  <div class="center">
+    <h2>Your Searches</h2>
 
-<ul>
-  <% @searches.each do |search| %>
-    <li><%= link_to search.query, search_path(search) %> in
-       <%= search.location %></li>
-  <% end %>
-</ul>
+    <% if @searches.first %>
+      <ul>
+        <% @searches.each do |search| %>
+          <li><%= link_to search.query, search_path(search) %> in
+             <%= search.location %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>It looks like you haven't entered any searches yet. Head over to the
+      <%= link_to 'search creation', new_search_path %> page and try it out!</p>
+    <% end %>
+  </div>
+</div>
