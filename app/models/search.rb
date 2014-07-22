@@ -762,17 +762,6 @@ class Search < ActiveRecord::Base
       }
 
 CATEGORIES = {
-    'housing' => { short: 'hhh' },
-    'apts / housing' =>  { short: 'apa' },
-    'rooms / shared' =>  { short: 'roo' },
-    'sublets / temporary' =>  { short: 'sub' },
-    'housing wanted' =>  { short: 'hsw' },
-    'housing swap' =>  { short: 'swp' },
-    'vacation rentals' =>  { short: 'vac' },
-    'parking storage' =>  { short: 'prk' },
-    'office commercial' =>  { short: 'off' },
-    'real estate for sale' =>  { short: 'rea' },
-
     'for sale' =>  { short: 'sss' },
     'appliances' =>  { short: 'ppa' },
     'antiques' =>  { short: 'ata' },
@@ -809,6 +798,17 @@ CATEGORIES = {
     'music instr' =>  { short: 'msa' },
     'photo video' =>  { short: 'pha' },
     'toys games' =>  { short: 'taa' },
-    'video gaming' =>  { short: 'vga' }
+    'video gaming' =>  { short: 'vga' },
+
+    'housing' => { short: 'hhh' },
+    'apts / housing' =>  { short: 'apa' },
+    'rooms / shared' =>  { short: 'roo' },
+    'sublets / temporary' =>  { short: 'sub' },
+    'housing wanted' =>  { short: 'hsw' },
+    'housing swap' =>  { short: 'swp' },
+    'vacation rentals' =>  { short: 'vac' },
+    'parking storage' =>  { short: 'prk' },
+    'office commercial' =>  { short: 'off' },
+    'real estate for sale' =>  { short: 'rea' }
   }
 end

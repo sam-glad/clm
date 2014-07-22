@@ -1,63 +1,67 @@
-<h2><%= @search.query %></h2>
+<div class="jumbotron">
 
-<ul>
-  <li><%= @search.location %></li>
-  <li>Category: <%= @search.category %></li>
-  <% if @search.min_price %>
-    <li>Min Price: $<%= @search.min_price %> </li>
-  <% end %>
-  <% if @search.max_price %>
-    <li>Max Price: $<%= @search.max_price %></li>
-  <% end %>
-  <% if @search.run_time %>
-    <li>Next search at <%= @search.run_time %></li>
-  <% end %>
-  <% if @search.active %>
-    <li>Automatically updating daily</li>
-  <% else %>
-    <li>No longer updating daily</li>
-  <% end %>
-</ul>
-<br>
+  <h2><%= @search.query %></h2>
 
-<h2> Results </h2>
-
-<p>If only see a few results and you just recently entered a new search,
-try checking back in 5-10 minutes.</p>
-<br>
-<br>
-
-<% if @posts %>
-  <div class="postTable">
-    <table class="table table-hover">
-      <tr class="tableHeader">
-        <th>Title</th>
-        <th>Location</th>
-        <th>Date</th>
-        <th>Price</th>
-      </tr>
-      <% @posts.each do |post| %>
-        <tr>
-          <td>
-            <%= link_to post.title, search_post_path(post.search, post) %></td>
-          <td>
-            <%= post.location %></td>
-          <td><%= post.date %></td>
-          <td>$<%= post.price %></td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-<% end %>
-
-<%= form_for @search, url: search_path(@search), method: :patch do |f| %>
-  <%= f.check_box(:active) %>
-  <%= f.label(:active, 'Continue updating this search daily') %>
-  <%= f.submit 'Update preference' %>
+  <ul>
+    <li><%= @search.location %></li>
+    <li>Category: <%= @search.category %></li>
+    <% if @search.min_price %>
+      <li>Min Price: $<%= @search.min_price %> </li>
+    <% end %>
+    <% if @search.max_price %>
+      <li>Max Price: $<%= @search.max_price %></li>
+    <% end %>
+    <% if @search.run_time %>
+      <li>Next search at <%= @search.run_time %></li>
+    <% end %>
+    <% if @search.active %>
+      <li>Automatically updating daily</li>
+    <% else %>
+      <li>No longer updating daily</li>
+    <% end %>
+  </ul>
   <br>
-<% end %>
 
-<div class="center">
-  <%= button_to 'Delete', search_path(@search), method: :delete,
-    data: { confirm: 'Are you sure you want to delete this search?' } %>
+  <h2> Results </h2>
+
+  <p>If only see a few results and you just recently entered a new search,
+  try checking back in 5-10 minutes.</p>
+  <br>
+  <br>
+
+  <% if @posts %>
+    <div class="postTable">
+      <table class="table table-hover">
+        <tr class="tableHeader">
+          <th>Title</th>
+          <th>Location</th>
+          <th>Date</th>
+          <th>Price</th>
+        </tr>
+        <% @posts.each do |post| %>
+          <tr>
+            <td>
+              <%= link_to post.title, search_post_path(post.search, post) %></td>
+            <td>
+              <%= post.location %></td>
+            <td><%= post.date %></td>
+            <td>$<%= post.price %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+
+  <%= form_for @search, url: search_path(@search), method: :patch do |f| %>
+    <%= f.check_box(:active) %>
+    <%= f.label(:active, 'Continue updating this search daily') %>
+    <%= f.submit 'Update preference', { class: 'btn btn-success' } %>
+    <br>
+  <% end %>
+
+  <div class="center">
+    <%= button_to 'Delete', search_path(@search), method: :delete,
+      data: { confirm: 'Are you sure you want to delete this search?' },
+      { class: 'btn btn-alert' } %>
+  </div>
 </div>
