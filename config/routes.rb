@@ -2,7 +2,8 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :searches, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
+  resources :searches, only: [:index, :new, :create, :show, :destroy, :edit,
+                              :update, :home] do
     resources :posts, only: [:show]
   end
 
@@ -10,5 +11,5 @@ Rails.application.routes.draw do
     mount Sidekiq::Web, at: '/sidekiq'
   end
 
-  root to: 'searches#index'
+  root to: 'home#main'
 end
