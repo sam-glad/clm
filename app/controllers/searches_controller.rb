@@ -47,9 +47,6 @@ class SearchesController < ApplicationController
     ScraperWorker.perform_async(search_id)
   end
 
-  def main
-  end
-
   private
 
   def search_params

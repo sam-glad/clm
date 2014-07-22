@@ -11,5 +11,5 @@ Rails.application.routes.draw do
     mount Sidekiq::Web, at: '/sidekiq'
   end
 
-  root to: 'searches#main'
+  root to: 'home#main'
 end
