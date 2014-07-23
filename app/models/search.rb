@@ -43,7 +43,7 @@ class Search < ActiveRecord::Base
   end
 
   def update_results
-    if !@results.empty?
+    if !results.empty?
       @results.each do |result|
         Post.find_or_create_from_craigslist_result(result)
       end
