@@ -51,6 +51,42 @@ feature 'user creates a new search', %Q(
     expect(Search.first.has_img).to eq true
   end
 
+  scenario 'user enters bad input for min price' do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
+    search = FactoryGirl.build(:search, user: user)
+
+    visit new_search_path
+    fill_in 'Query', with: search.query
+    select search.location, from: 'Location'
+    select search.category, from: 'Category'
+    fill_in 'Min Price', with: -1
+    click_on 'Submit'
+
+    expect(page).to_not have_content 'Search added!'
+    expect(page).to have_content 'Oops! Check your error messages below.'
+    expect(page).to have_content 'Min price must be zero or more!'
+  end
+
+  scenario 'user enters bad input for min price' do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
+    search = FactoryGirl.build(:search, user: user)
+
+    visit new_search_path
+    fill_in 'Query', with: search.query
+    select search.location, from: 'Location'
+    select search.category, from: 'Category'
+    fill_in 'Max Price', with: -1
+    click_on 'Submit'
+
+    expect(page).to_not have_content 'Search added!'
+    expect(page).to have_content 'Oops! Check your error messages below.'
+    expect(page).to have_content 'Max price must be zero or more!'
+  end
+
   scenario 'user fails to create a search ' \
     'without a query, location, or category' do
     user = FactoryGirl.create(:user)
