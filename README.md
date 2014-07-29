@@ -7,3 +7,5 @@ Unfortunately, it does not work in production due to Craigslist's having caught 
 
 The following features are planned for the near future:
 -A feedback link through which users will be able to report bugs or send other comments to myself through the website (via ActionMailer)
+
+Craigmonster in action: http://www.youtube.com/watch?v=3HnzzSEKXpc
