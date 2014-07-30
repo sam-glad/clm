@@ -29,6 +29,9 @@ feature 'user creates a new search', %Q(
     expect(search.has_img).to eq false
 
     saved_search = Search.last
+
+    saved_search.root_cl.should eq("#{Search::CITIES[saved_search.location][:url]}")
+
     saved_search.url.should eq("#{saved_search.root_cl}/search/" \
       "#{Search::CATEGORIES[saved_search.category][:short]}?query=" \
       "#{saved_search.query.gsub(/\s+/, '+')}&minAsk=" \
@@ -55,6 +58,11 @@ feature 'user creates a new search', %Q(
     expect(page).to_not have_content 'Min price'
     expect(page).to_not have_content 'Max price'
     expect(Search.first.has_img).to eq true
+
+    saved_search = Search.last
+    saved_search.url.should eq("#{saved_search.root_cl}/search/" \
+      "#{Search::CATEGORIES[saved_search.category][:short]}?query=" \
+      "#{saved_search.query.gsub(/\s+/, '+')}&hasPic=1")
   end
 
   scenario 'user enters bad input for min price' do
