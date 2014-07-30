@@ -5,6 +5,9 @@ class Post < ActiveRecord::Base
   validates :search, presence: true
   validates :title, presence: true
   validates :page_href, presence: true, uniqueness: true
+  validates :page_href, on: :create, :update 
+  format: { with: /\A\/\w{3}\/\w{3}\/\d{10}\.html\z/ }
+
   validates :url, presence: true
 
   reverse_geocoded_by :latitude, :longitude
