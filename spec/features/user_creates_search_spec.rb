@@ -27,6 +27,12 @@ feature 'user creates a new search', %Q(
     expect(page).to have_content "Min Price: $#{search.min_price}"
     expect(page).to have_content "Max Price: $#{search.max_price}"
     expect(search.has_img).to eq false
+
+    saved_search = Search.last
+    saved_search.url.should eq("#{saved_search.root_cl}/search/" \
+      "#{Search::CATEGORIES[saved_search.category][:short]}?query=" \
+      "#{saved_search.query.gsub(/\s+/, '+')}&minAsk=" \
+      "#{saved_search.min_price}&maxAsk=#{saved_search.max_price}")
   end
 
   scenario 'user creates a search with no min/max prices' do
