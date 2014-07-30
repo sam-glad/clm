@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
   validates :page_href, format: { with: /\A\/\w{3}\/\w{3}\/\d{10}\.html\z/ }
 
   validates :url, presence: true
+  validates :url, format: { with: /\Ahttp:\/\/\w*\.craigslist.org\/\w{3}\/\w{3}\/\d{10}\.html\z/ }
 
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode  # auto-fetch address
