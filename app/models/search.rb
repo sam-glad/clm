@@ -2,10 +2,14 @@ class Search < ActiveRecord::Base
   validates :query, presence: true, uniqueness: { scope: [:user, :location] }
   validates :location, presence: true
   validates :user, presence: true
-  validates :min_price, allow_blank: true, numericality:
-    { greater_than_or_equal_to: 0, message: 'Min price must be zero or more!' }
-  validates :max_price, allow_blank: true, numericality:
-    { greater_than_or_equal_to: 0, message: 'Max price must be zero or more!' }
+  validates :min_price,
+            allow_blank: true,
+            numericality: { greater_than_or_equal_to: 0, message: 'Min price' \
+              ' must be zero or more!' }
+  validates :max_price,
+            allow_blank: true,
+            numericality: { greater_than_or_equal_to: 0, message: 'Max price' \
+              ' must be zero or more!' }
 
   belongs_to :user
   has_many :posts, dependent: :destroy
