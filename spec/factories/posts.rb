@@ -8,8 +8,8 @@ FactoryGirl.define do
     location 'Ann Arbor'
     date Date.parse(Chronic.parse('now').to_s)
     body 'Lots of drums!'
-    sequence(:page_href) { |n| "/bmw/msg/12345#{n}7890.html" }
-    url 'http://boston.craigslist.org/bmw/msg/1234567890.html'
+    sequence(:page_href) { |n| "/bmw/msg/#{n}234567890.html" }
+    sequence(:url) { |n| "http://boston.craigslist.org/bmw/msg/#{n}234567890.html" }
     latitude 45.0
     longitude 45.0
     address 'P263, Stavropol Krai, Russia'
