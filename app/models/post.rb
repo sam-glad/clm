@@ -4,8 +4,22 @@ class Post < ActiveRecord::Base
 
   validates :search, presence: true
   validates :title, presence: true
-  validates :page_href, presence: true, uniqueness: true
-  validates :url, presence: true
+  validates :page_href,
+            presence: true,
+            format: { with: /\A\/\w{3}\/\w{3}\/\d*\.html\z/ }
+
+  validates :url, presence: true,
+            uniqueness: true,
+            format: { with: /\Ahttp:\/\/\w*\.craigslist.org\/\w{3}\/\w{3}\/\d*\.html\z/ }
+
+  validates :latitude,
+            allow_nil: true,
+            numericality: true,
+            inclusion: { in: -90.0..90.0 }
+  validates :longitude,
+            allow_nil: true,
+            numericality: true,
+            inclusion: { in: -180.0..180.0 }
 
   reverse_geocoded_by :latitude, :longitude
   after_validation :reverse_geocode  # auto-fetch address
