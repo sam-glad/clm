@@ -19,6 +19,17 @@
         1,
         null
       ],
+      "/Users/samuelgladstone/Dropbox/launchacademy/clm/app/models/image.rb": [
+        1,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null
+      ],
       "/Users/samuelgladstone/Dropbox/launchacademy/clm/app/models/post.rb": [
         1,
         1,
@@ -986,16 +997,8 @@
         2,
         null,
         null
-      ],
-      "/Users/samuelgladstone/Dropbox/launchacademy/clm/app/models/image.rb": [
-        1,
-        1,
-        1,
-        null,
-        1,
-        null
       ]
     },
-    "timestamp": 1406762390
+    "timestamp": 1406773223
   }
 }
