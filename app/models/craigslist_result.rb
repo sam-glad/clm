@@ -43,7 +43,7 @@ class CraigslistResult
   # ========================== Show-page-specific info==========================
 
   def open_page(link)
-    RestClient.get(link)
+    Nokogiri::HTML(open((link))
   end
 
   def body

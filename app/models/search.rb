@@ -15,7 +15,7 @@ class Search < ActiveRecord::Base
   has_many :posts, dependent: :destroy
 
   def open_page(url)
-    RestClient.get(url)
+    Nokogiri::HTML(open(url))
   end
 
   def root_cl

@@ -33,7 +33,6 @@ gem 'devise'
 gem 'chronic'
 # Scrape web pages
 gem 'nokogiri'
-gem 'restclient'
 # Allow for scraping to be done as a background job
 gem 'sidekiq'
 gem 'redis'
