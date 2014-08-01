@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class CraigslistResult
   attr_accessor :html, :url, :fetched_show_page
   attr_reader :search, :root_cl
@@ -43,7 +45,7 @@ class CraigslistResult
   # ========================== Show-page-specific info==========================
 
   def open_page(link)
-    Nokogiri::HTML(open((link))
+    Nokogiri::HTML(open(link))
   end
 
   def body
