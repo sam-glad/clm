@@ -49,7 +49,7 @@ class CraigslistResult
   end
 
   def body
-    @body = @fetched_show_page.css('section#postingbody').text
+    @body = @fetched_show_page.css('section#postingbody').text.strip
   end
 
   def latitude
