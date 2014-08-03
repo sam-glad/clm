@@ -33,12 +33,12 @@ describe CraigslistResult do
   end
 
   it 'should load the latitude appropriately' do
-    # @first_cl_post.latitude.should == '42.728100'
+    @first_cl_post.latitude.should == 42.728100
     @third_cl_post.latitude.should == nil
   end
 
   it 'should load the longitude appropriately' do
-    # @first_cl_post.longitude.should == -70.982200
+    @first_cl_post.longitude.should == -70.982200
     @third_cl_post.longitude.should == nil
   end
 
