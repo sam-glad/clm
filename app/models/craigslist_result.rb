@@ -65,9 +65,9 @@ class CraigslistResult
   end
 
   def imgs
-    if Nokogiri::HTML(@fetched_show_page).css('div#thumbs a').first
+    if @fetched_show_page.css('div#thumbs a').first
       @imgs = []
-      Nokogiri::HTML(@fetched_show_page).css('div#thumbs a').each do |pic|
+      @fetched_show_page.css('div#thumbs a').each do |pic|
         @imgs << pic['href']
       end
       @imgs
