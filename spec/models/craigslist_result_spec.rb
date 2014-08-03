@@ -27,6 +27,12 @@ describe CraigslistResult do
     @second_cl_post.price.should == 150
   end
 
+  it 'should load the date appropriately' do
+    @first_cl_post.date.to_s.should == '2014-08-01'
+    @second_cl_post.date.to_s.should == '2014-08-01'
+    binding.pry
+  end
+
   it 'should load the body appropriately' do
     @first_cl_post.body.should == "FULL CB DRUM SET WITH THE CYMBOLS from CB AND THE THRONE\nALL DRUMS AND CYMBOLS LIKE NEW"
     @second_cl_post.body.should == "Comes with the first 20 Reason Refills. $150 (originally $250) or best offer. No registration, no ilock, and no account required. Just upload the files onto your computer.\n\nComes with:\nSynths 1\nSynths 2\nRhythm section\nPianos and organs\nSymphonic\nOmnisoundz\nReality drums\nMonster drums\nVintage drums\nInstruments of the 60s and 70s\nRetro keys\nAcoustic folk\nWorld percussion\nEthnic instruments\nFilm orchestra \nTriple bass\nTriple guitars\nSynths 3 \nVocal Textures\nMello-T\n\nSoftware bundle must be picked up at Berklee College of Music - 150 Mass. Ave 02115"
