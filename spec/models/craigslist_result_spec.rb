@@ -45,7 +45,6 @@ describe CraigslistResult do
 
   it 'should load the images appropriately' do
     @third_cl_post.imgs.should include("http://images.craigslist.org/00v0v_6rNpeqwtvKJ_600x450.jpg", "http://images.craigslist.org/00v0v_6rNpeqwtvKJ_600x450.jpg")
-    # @first_cl_post.imgs.should == "./CB DRUMS BLACK W  CB CYMBOLS_files/00j0j_cATxTexvenB_600x450.jpg", "http://images.craigslist.org/00T0T_6i5lp3jwize_600x450.jpg", "http://images.craigslist.org/00y0y_ho6itn1Y6tr_600x450.jpg", "http://images.craigslist.org/00d0d_5iueje6pvq5_600x450.jpg", "http://images.craigslist.org/00O0O_hvzdh3BYtv6_600x450.jpg", "http://images.craigslist.org/00606_7F6LgnQRwbb_600x450.jpg", "http://images.craigslist.org/00c0c_aVFTKRZuhIi_600x450.jpg", "http://images.craigslist.org/00Y0Y_k22O774GOgb_600x450.jpg"]
   end
 
   it 'should load the latitude appropriately' do
