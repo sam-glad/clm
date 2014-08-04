@@ -9,7 +9,7 @@ class CraigslistResult
     @search = search
     @root_cl = root_cl
     @url = root_cl + page_href
-    @fetched_show_page = open_page(url)
+    @fetched_show_page = open_page(@url)
   end
 
   def title
@@ -49,25 +49,25 @@ class CraigslistResult
   end
 
   def body
-    @body = Nokogiri::HTML(@fetched_show_page).css('section#postingbody').text
+    @body = @fetched_show_page.css('section#postingbody').text.strip
   end
 
   def latitude
-    if Nokogiri::HTML(@fetched_show_page).css('div#map').first
-      @latitude = Nokogiri::HTML(@fetched_show_page).css('div#map').first['data-latitude'].to_f
+    if @fetched_show_page.css('div#map').first
+      @latitude = @fetched_show_page.css('div#map').first['data-latitude'].to_f
     end
   end
 
   def longitude
-    if Nokogiri::HTML(@fetched_show_page).css('div#map').first
-      @longitude = Nokogiri::HTML(@fetched_show_page).css('div#map').first['data-longitude'].to_f
+    if @fetched_show_page.css('div#map').first
+      @longitude = @fetched_show_page.css('div#map').first['data-longitude'].to_f
     end
   end
 
   def imgs
-    if Nokogiri::HTML(@fetched_show_page).css('div#thumbs a').first
+    if @fetched_show_page.css('div#thumbs a').first
       @imgs = []
-      Nokogiri::HTML(@fetched_show_page).css('div#thumbs a').each do |pic|
+      @fetched_show_page.css('div#thumbs a').each do |pic|
         @imgs << pic['href']
       end
       @imgs
