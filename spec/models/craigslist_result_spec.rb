@@ -28,8 +28,8 @@ describe CraigslistResult do
   end
 
   it 'should load the date appropriately' do
-    @first_cl_post.date.to_s.should == '2014-08-01'
-    @second_cl_post.date.to_s.should == '2014-08-01'
+    @first_cl_post.date.to_s.should == '2015-08-01'
+    @second_cl_post.date.to_s.should == '2015-08-01'
   end
 
   it 'should load the body appropriately' do
